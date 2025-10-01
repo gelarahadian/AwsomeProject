@@ -1,56 +1,75 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- *
- * @format
- */
-
-import { NewAppScreen } from '@react-native/new-app-screen';
+import React from 'react';
 import {
-  StatusBar,
+  Button,
+  ImageBackground,
   StyleSheet,
   Text,
-  useColorScheme,
+  TouchableOpacity,
   View,
 } from 'react-native';
-import {
-  SafeAreaProvider,
-  useSafeAreaInsets,
-} from 'react-native-safe-area-context';
+import LinearGradient from 'react-native-linear-gradient';
 
-function App() {
-  const isDarkMode = useColorScheme() === 'dark';
-
+const App = () => {
   return (
-    <SafeAreaProvider>
-      <StatusBar barStyle={isDarkMode ? 'light-content' : 'dark-content'} />
-      <AppContent />
-    </SafeAreaProvider>
+    <ImageBackground
+      source={{
+        uri: 'https://www.acethehimalaya.com/wp-content/uploads/2023/11/where-is-mount-everest-located.jpg.webp',
+      }}
+      style={styles.background}
+    >
+      <LinearGradient
+        colors={['rgba(0,0,0,0)', 'rgba(0,0,0,0.6)']}
+        style={styles.gradient}
+      >
+        <View style={styles.content}>
+          <Text style={styles.heading}>Your Next Adventure Starts Here</Text>
+          <Text style={styles.paragraph}>
+            Life's too short to stay in one place. Find your next favorite city,
+            beach, or mountain and let's get moving!
+          </Text>
+          <TouchableOpacity style={styles.button}>
+            <Text style={styles.textButton}>Start Exploring</Text>
+          </TouchableOpacity>
+        </View>
+      </LinearGradient>
+    </ImageBackground>
   );
-}
-
-function AppContent() {
-  const safeAreaInsets = useSafeAreaInsets();
-
-  return (
-    <View style={styles.container}>
-      <Text style={styles.white}>Hello World</Text>
-      {/* <NewAppScreen
-        templateFileName="App.tsx"
-        safeAreaInsets={safeAreaInsets}
-      /> */}
-    </View>
-  );
-}
+};
 
 const styles = StyleSheet.create({
-  container: {
+  background: {
     flex: 1,
+    resizeMode: 'cover',
   },
-  white: {
+  gradient: {
+    flex: 1,
+    justifyContent: 'flex-end',
+  },
+  content: {
+    marginHorizontal: 24,
+    marginBottom: 48,
+  },
+  heading: {
     color: 'white',
-    marginTop: 50,
-    fontWeight: 'bold',
+    fontSize: 36,
+    fontWeight: '400',
+    marginBottom: 12,
+  },
+  paragraph: {
+    color: '#ccc',
+    fontWeight: '300',
+    marginBottom: 20,
+    fontSize: 14,
+  },
+  button: {
+    backgroundColor: '#2fe0da',
+    paddingHorizontal: 20,
+    paddingVertical: 12,
+    borderRadius: 999,
+    alignSelf: 'flex-start',
+  },
+  textButton: {
+    fontWeight: '600',
   },
 });
 
