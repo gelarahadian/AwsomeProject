@@ -1,5 +1,5 @@
 import TabNavigator from './TabNavigator';
-import Setting from '../../screens/drawer-screen/Setting';
+import Setting from '../screens/drawer-screen/Setting';
 import {
   createDrawerNavigator,
   DrawerContentScrollView,

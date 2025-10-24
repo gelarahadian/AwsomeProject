@@ -1,10 +1,17 @@
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import StartScreen from '../../screens/StartScreen';
+import StartScreen from '../screens/StartScreen';
 import DrawerNavigator from './DrawerNavigator';
-import DetailExample from '../../screens/detail/DetailExample';
-import DetailExample2 from '../../screens/detail/DetailExample2';
+import DetailExample from '../screens/detail/DetailExample';
+import DetailExample2 from '../screens/detail/DetailExample2';
 
-const Stack = createNativeStackNavigator();
+export type RootStackParamList = {
+  StartScreen: undefined;
+  Main: undefined;
+  DetailExample: undefined;
+  DetailExample2: { itemId?: number; itemName?: string };
+};
+
+const Stack = createNativeStackNavigator<RootStackParamList>();
 
 const AppNavigator = () => {
   return (
@@ -20,3 +27,5 @@ const AppNavigator = () => {
     </Stack.Navigator>
   );
 };
+
+export default AppNavigator;
