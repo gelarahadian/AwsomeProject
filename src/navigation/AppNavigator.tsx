@@ -21,8 +21,16 @@ const AppNavigator = () => {
         name="StartScreen"
         component={StartScreen}
       />
-      <Stack.Screen name="Main" component={DrawerNavigator} />
-      <Stack.Screen name="DetailExample" component={DetailExample} />
+      <Stack.Screen
+        name="Main"
+        options={{ headerShown: false }}
+        component={DrawerNavigator}
+      />
+      <Stack.Screen
+        options={{ headerShown: false }}
+        name="DetailExample"
+        component={DetailExample}
+      />
       <Stack.Screen name="DetailExample2" component={DetailExample2} />
     </Stack.Navigator>
   );

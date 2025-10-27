@@ -1,6 +1,30 @@
-pluginManagement { includeBuild("../node_modules/@react-native/gradle-plugin") }
-plugins { id("com.facebook.react.settings") }
-extensions.configure(com.facebook.react.ReactSettingsExtension){ ex -> ex.autolinkLibrariesFromCommand() }
-rootProject.name = 'AwesomeProject'
-include ':app'
-includeBuild('../node_modules/@react-native/gradle-plugin')
+pluginManagement {
+    repositories {
+        mavenCentral()
+        google()
+        gradlePluginPortal()
+        includeBuild("../node_modules/@react-native/gradle-plugin")
+    }
+}
+
+plugins {
+    id("com.facebook.react.settings")
+}
+
+extensions.configure(com.facebook.react.ReactSettingsExtension) { ex ->
+    ex.autolinkLibrariesFromCommand()
+}
+
+apply from: new File(
+    ["node", "--print", "require.resolve('expo/package.json')"]
+        .execute(null, rootDir)
+        .text
+        .trim(),
+    "../scripts/autolinking.gradle"
+)
+
+useExpoModules()
+
+rootProject.name = "AwesomeProject"
+include(":app")
+includeBuild("../node_modules/@react-native/gradle-plugin")
